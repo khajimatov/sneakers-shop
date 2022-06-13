@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Sneakers Shop
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Project build with ReactJS.
 
 ## Available Scripts
 
