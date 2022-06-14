@@ -7,7 +7,7 @@ Project build with ReactJS. I am developing this website to add it to my portfol
 - Cart
 - Favorites
 
-14th June 2022, project looks like this↴
+## 14th June 2022, project looks like this↴
 ![image](https://user-images.githubusercontent.com/62846961/173591850-f72fd391-a971-4c4e-bf52-af0fe7b2b3f2.png)
 
 
