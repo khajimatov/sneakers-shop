@@ -13,16 +13,21 @@ function App() {
           ></img>
           <div>
             <h3>REACT SNEAKERS</h3>
-            <p>Магазин лучших кроссовок</p>
+            <p>Best sneakers shop</p>
           </div>
         </div>
         <ul>
           <li>
             <img width={20} height={20} src="/img/group.svg" alt="Group"></img>
-            <span>1205 руб.</span>
+            <span>1205 USD.</span>
           </li>
           <li>
-            <img width={20} height={20} src="/img/favorite.svg" alt="Group"></img>
+            <img
+              width={20}
+              height={20}
+              src="/img/favorite.svg"
+              alt="Group"
+            ></img>
           </li>
           <li>
             <img width={20} height={20} src="/img/union.svg" alt="Group"></img>
@@ -30,7 +35,7 @@ function App() {
         </ul>
       </header>
       <div className="content">
-        <h1>Все кроссовки</h1>
+        <h1>All sneakers</h1>
         <div className="sneakers"></div>
       </div>
     </div>
