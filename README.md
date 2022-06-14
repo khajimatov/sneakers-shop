@@ -2,9 +2,14 @@
 
 Project build with ReactJS.
 
-## Available Scripts
+## Functionalities:
 
-In the project directory, you can run:
+- Cart
+- Favorites
+
+14th June 2022, project looks like this⤵
+![image](https://user-images.githubusercontent.com/62846961/173588569-b47fc289-c7a5-4c7b-9418-12e4a1a7912b.png)
+
 
 ### `npm start`
 
