@@ -1,6 +1,6 @@
 # Sneakers Shop
 
-Project build with ReactJS.
+Project build with ReactJS. I am developing this website to add it to my portfolio and learn HTML, CSS, JavaScript and ReactJS throughout development and learning process.
 
 ## Functionalities:
 
