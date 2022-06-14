@@ -1,10 +1,15 @@
-# Getting Started with Create React App
+# Sneakers Shop
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Project build with ReactJS. I am developing this website to add it to my portfolio and learn HTML, CSS, JavaScript and ReactJS throughout development and learning process.
 
-## Available Scripts
+## Functionalities:
 
-In the project directory, you can run:
+- Cart
+- Favorites
+
+## 14th June 2022, project looks like this↴
+![image](https://user-images.githubusercontent.com/62846961/173591850-f72fd391-a971-4c4e-bf52-af0fe7b2b3f2.png)
+
 
 ### `npm start`
 
