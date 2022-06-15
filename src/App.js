@@ -3,6 +3,49 @@ import './index.scss'
 function App() {
   return (
     <div className="wrapper">
+      <div className="overlay">
+        <div className="drawer">
+          <h2 className="mt-30">Your cart</h2>
+
+          <div className="items">
+            <div className="cartItem d-flex justify-between align-center">
+              <img
+                className="sneakerImage"
+                width={90}
+                height={80}
+                src="/img/1.jpg"
+                alt="Nike Blazer Mid Suede for Men"
+              />
+              <div>
+                <h4>Nike Blazer Mid Suede for Men</h4>
+                <b>$120 USD</b>
+              </div>
+
+              <img
+                className="removeBtn"
+                width={32}
+                height={32}
+                src="/img/remove-btn.svg"
+                alt="Remove Icon"
+              />
+            </div>
+          </div>
+          <div className="cartTotalBlock">
+            <ul>
+              <li className="d-flex mb-15">
+                <span>Tax fee (5%):</span>
+                <div></div>
+                <b>$24 USD</b>
+              </li>
+              <li className="d-flex">
+                <span>Total:</span>
+                <div></div>
+                <b>$144 USD</b>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
       <header>
         <div className="headerLeft">
           <img
@@ -37,10 +80,9 @@ function App() {
       <div className="content">
         <div className="d-flex justify-between align-center">
           <h1>All sneakers</h1>
-          <div className="search-block align-center d-flex cu-p">
-            <label for="search">
+          <div className="search-block align-center d-flex">
+            <label htmlFor="search">
               <img
-                className="cu-p"
                 width={16}
                 height={16}
                 src="/img/search.svg"
@@ -48,7 +90,7 @@ function App() {
               />
             </label>
             <input
-              autocomplete="off"
+              autoComplete="off"
               type="text"
               placeholder="Search..."
               name="search"
