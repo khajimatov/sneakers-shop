@@ -37,7 +37,7 @@ function App() {
       <div className="content">
         <div className="d-flex justify-between align-center">
           <h1>All sneakers</h1>
-          <div className="search-block align-center d-flex cu-p" for="search">
+          <div className="search-block align-center d-flex cu-p">
             <label for="search">
               <img
                 className="cu-p"
@@ -59,6 +59,13 @@ function App() {
 
         <div className="sneakers">
           <div className="card">
+            <img
+              className="pos-a cu-p"
+              height={22}
+              width={22}
+              src="/img/favorite-btn.svg"
+              alt="Favorite Icon"
+            />
             <img
               width={133}
               height={112}
