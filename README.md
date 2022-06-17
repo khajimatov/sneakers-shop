@@ -12,7 +12,7 @@ Project build with ReactJS. I am developing this website to add it to my portfol
 
 
 ## 16-17th June 2022, project looks like this↴
-![image](https://user-images.githubusercontent.com/62846961/174229725-e45ab135-ce30-4814-9478-6ae2aad072c6.png)
+![image](https://user-images.githubusercontent.com/62846961/174230173-c1295279-a822-4d7e-b75b-8d1c2953efe0.png)
 
 
 ### `npm start`
