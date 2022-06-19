@@ -1,6 +1,8 @@
+import styles from './Card.module.scss'
+
 function Card(props) {
   return (
-    <div className="card">
+    <div className={styles.card}>
       <img
         className="pos-a cu-p"
         height={22}
@@ -10,10 +12,10 @@ function Card(props) {
       />
       <img width={133} height={112} src={props.imageURL} alt={props.title} />
       <h4>{props.title}</h4>
-      <div className="cardinfo">
+      <div className={styles.cardinfo}>
         <div>
           <h6>PRICE:</h6>
-          <b>{props.price}</b>
+          <b>${props.price} USD</b>
         </div>
         <button>
           <svg

@@ -6,22 +6,22 @@ import Drawer from './components/Drawer'
 const arr = [
   {
     name: 'Nike Blazer Mid Suede',
-    price: 24500,
+    price: 500,
     imageURL: '/img/sneakers/1.jpg',
   },
   {
     name: 'Nike Air Max 270',
-    price: 12999,
+    price: 399,
     imageURL: '/img/sneakers/2.jpg',
   },
   {
     name: 'Puma X Aka Boku Future Rider',
-    price: 6999,
+    price: 755,
     imageURL: '/img/sneakers/3.jpg',
   },
   {
     name: 'Under Armour Curry 8',
-    price: 4590,
+    price: 450,
     imageURL: '/img/sneakers/4.jpg',
   },
 ]
