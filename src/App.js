@@ -3,6 +3,29 @@ import Card from './components/Card'
 import Header from './components/Header'
 import Drawer from './components/Drawer'
 
+const arr = [
+  {
+    name: 'Nike Blazer Mid Suede',
+    price: 24500,
+    imageURL: '/img/sneakers/1.jpg',
+  },
+  {
+    name: 'Nike Air Max 270',
+    price: 12999,
+    imageURL: '/img/sneakers/2.jpg',
+  },
+  {
+    name: 'Puma X Aka Boku Future Rider',
+    price: 6999,
+    imageURL: '/img/sneakers/3.jpg',
+  },
+  {
+    name: 'Under Armour Curry 8',
+    price: 4590,
+    imageURL: '/img/sneakers/4.jpg',
+  },
+]
+
 function App() {
   return (
     <div className="wrapper">
@@ -31,11 +54,9 @@ function App() {
         </div>
 
         <div className="sneakers">
-          <Card />
-          <Card />
-          <Card />
-
-          <Card />
+          {arr.map((obj) => (
+            <Card title={obj.name} price={obj.price} imageURL={obj.imageURL} />
+          ))}
         </div>
       </div>
     </div>

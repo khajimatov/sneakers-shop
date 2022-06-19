@@ -1,4 +1,4 @@
-function Card() {
+function Card(props) {
   return (
     <div className="card">
       <img
@@ -8,17 +8,12 @@ function Card() {
         src="/img/favorite-btn.svg"
         alt="Favorite Icon"
       />
-      <img
-        width={133}
-        height={112}
-        src="/img/11.jpg"
-        alt="Nike Blazer Mid Suede for Men"
-      />
-      <h4>Nike Blazer Mid Suede for Men</h4>
+      <img width={133} height={112} src={props.imageURL} alt={props.title} />
+      <h4>{props.title}</h4>
       <div className="cardinfo">
         <div>
           <h6>PRICE:</h6>
-          <b>$120 USD</b>
+          <b>{props.price}</b>
         </div>
         <button>
           <svg
@@ -48,4 +43,4 @@ function Card() {
     </div>
   )
 }
-export default Card;
+export default Card
