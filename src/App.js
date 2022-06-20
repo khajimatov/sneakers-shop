@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import './index.scss'
 import Card from './components/Card'
 import Header from './components/Header'
@@ -27,10 +28,12 @@ const arr = [
 ]
 
 function App() {
+  const [isCartOpened, setIsCartOpened] = useState(false)
+
   return (
     <div className="wrapper">
-      <Drawer />
-      <Header />
+      {isCartOpened && <Drawer onClose={() => setIsCartOpened(false)} />}
+      <Header onClickCart={() => setIsCartOpened(true)} />
       <div className="content">
         <div className="d-flex justify-between align-center">
           <h1>All sneakers</h1>
