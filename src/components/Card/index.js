@@ -1,29 +1,30 @@
 import { useState } from 'react'
 import styles from './Card.module.scss'
 
-function Card(props) {
+function Card({ title, price, imageURL, onClickFavorite, onPlus }) {
   const [isAdded, setIsAdded] = useState(false)
 
   const onClickPlus = () => {
+    onPlus({ title, price, imageURL })
     setIsAdded(!isAdded)
   }
 
   return (
     <div className={styles.card}>
       <img
-        onClick={props.onClickFavorite}
+        onClick={onClickFavorite}
         className="pos-a cu-p"
         height={22}
         width={22}
         src="/img/favorite-btn.svg"
         alt="Favorite Icon"
       />
-      <img width={133} height={112} src={props.imageURL} alt={props.title} />
-      <h4>{props.title}</h4>
+      <img width={133} height={112} src={imageURL} alt={title} />
+      <h4>{title}</h4>
       <div className={styles.cardinfo}>
         <div>
           <h6>PRICE:</h6>
-          <b>${props.price} USD</b>
+          <b>${price} USD</b>
         </div>
         <button onClick={onClickPlus}>
           <img

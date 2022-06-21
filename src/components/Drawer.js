@@ -21,12 +21,12 @@ function Drawer({ onClose, items = [] }) {
                 className="sneakerImage"
                 width={90}
                 height={80}
-                src="/img/sneakers/1.jpg"
-                alt="Nike Blazer Mid Suede for Men"
+                src={obj.imageURL}
+                alt={obj.title}
               />
               <div>
-                <h4>Nike Blazer Mid Suede for Men</h4>
-                <b>$120 USD</b>
+                <h4>{obj.title}</h4>
+                <b>${obj.price} USD</b>
               </div>
 
               <img

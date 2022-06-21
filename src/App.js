@@ -6,6 +6,7 @@ import Drawer from './components/Drawer'
 
 function App() {
   const [items, setItems] = useState([])
+  const [cartItems, setCartItems] = useState([])
   const [isCartOpened, setIsCartOpened] = useState(false)
 
   useEffect(() => {
@@ -18,9 +19,13 @@ function App() {
       })
   }, [])
 
+  const onAddToCart = (obj) => {
+    setCartItems(prev => [...prev, obj])
+  }
+
   return (
     <div className="wrapper">
-      {isCartOpened && <Drawer onClose={() => setIsCartOpened(false)} />}
+      {isCartOpened && <Drawer items={cartItems} onClose={() => setIsCartOpened(false)} />}
       <Header onClickCart={() => setIsCartOpened(true)} />
       <div className="content">
         <div className="d-flex justify-between align-center">
@@ -45,8 +50,8 @@ function App() {
         </div>
 
         <div className="sneakers">
-          {items.map((obj) => (
-            <Card title={obj.title} price={obj.price} imageURL={obj.imageURL} />
+          {items.map((item) => (
+            <Card title={item.title} price={item.price} imageURL={item.imageURL} onPlus={(obj) => onAddToCart(obj)} />
           ))}
         </div>
       </div>
