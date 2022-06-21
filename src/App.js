@@ -1,34 +1,22 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './index.scss'
 import Card from './components/Card'
 import Header from './components/Header'
 import Drawer from './components/Drawer'
 
-const arr = [
-  {
-    name: 'Nike Blazer Mid Suede',
-    price: 500,
-    imageURL: '/img/sneakers/1.jpg',
-  },
-  {
-    name: 'Nike Air Max 270',
-    price: 399,
-    imageURL: '/img/sneakers/2.jpg',
-  },
-  {
-    name: 'Puma X Aka Boku Future Rider',
-    price: 755,
-    imageURL: '/img/sneakers/3.jpg',
-  },
-  {
-    name: 'Under Armour Curry 8',
-    price: 450,
-    imageURL: '/img/sneakers/4.jpg',
-  },
-]
-
 function App() {
+  const [items, setItems] = useState([])
   const [isCartOpened, setIsCartOpened] = useState(false)
+
+  useEffect(() => {
+    fetch('https://611a826e5710ca00173a1a6e.mockapi.io/items')
+      .then((res) => {
+        return res.json()
+      })
+      .then((json) => {
+        setItems(json)
+      })
+  }, [])
 
   return (
     <div className="wrapper">
@@ -57,8 +45,8 @@ function App() {
         </div>
 
         <div className="sneakers">
-          {arr.map((obj) => (
-            <Card title={obj.name} price={obj.price} imageURL={obj.imageURL} />
+          {items.map((obj) => (
+            <Card title={obj.title} price={obj.price} imageURL={obj.imageURL} />
           ))}
         </div>
       </div>
