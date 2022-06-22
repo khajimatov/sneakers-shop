@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import axios from 'axios'
 import './index.scss'
 import Card from './components/Card'
 import Header from './components/Header'
@@ -6,32 +7,54 @@ import Drawer from './components/Drawer'
 
 function App() {
   const [items, setItems] = useState([])
+  const [favoriteItems, setFavoriteItems] = useState([])
   const [searchValue, setSearchValue] = useState('')
   const [cartItems, setCartItems] = useState([])
   const [isCartOpened, setIsCartOpened] = useState(false)
 
   useEffect(() => {
-    fetch('https://611a826e5710ca00173a1a6e.mockapi.io/items')
+    axios
+      .get('https://611a826e5710ca00173a1a6e.mockapi.io/items')
       .then((res) => {
-        return res.json()
+        setItems(res.data)
       })
-      .then((json) => {
-        setItems(json)
+    axios
+      .get('https://611a826e5710ca00173a1a6e.mockapi.io/cart')
+      .then((res) => {
+        setCartItems(res.data)
       })
   }, [])
 
   const onAddToCart = (obj) => {
-    setCartItems((prev) => [...prev, obj])
+    axios
+      .post('https://611a826e5710ca00173a1a6e.mockapi.io/cart', obj)
+      .then(setCartItems((prev) => [...prev, obj]))
+  }
+
+  const onAddToFavorite = (obj) => {
+    axios
+      .post('https://611a826e5710ca00173a1a6e.mockapi.io/favorites', obj)
+      .then(setFavoriteItems((prev) => [...prev, obj]))
   }
 
   const onChangeSearchInput = (event) => {
     setSearchValue(event.target.value)
   }
 
+  const onRemoveItem = (id) => {
+    axios
+      .delete(`https://611a826e5710ca00173a1a6e.mockapi.io/cart/${id}`)
+      .then(setCartItems((prev) => prev.filter((item) => item.id !== id)))
+  }
+
   return (
     <div className="wrapper">
       {isCartOpened && (
-        <Drawer items={cartItems} onClose={() => setIsCartOpened(false)} />
+        <Drawer
+          onRemove={onRemoveItem}
+          items={cartItems}
+          onClose={() => setIsCartOpened(false)}
+        />
       )}
       <Header onClickCart={() => setIsCartOpened(true)} />
       <div className="content">
@@ -76,6 +99,7 @@ function App() {
             .map((item) => (
               <Card
                 key={item.id}
+                onFavorite={(obj) => onAddToFavorite(obj)}
                 title={item.title}
                 price={item.price}
                 imageURL={item.imageURL}

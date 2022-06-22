@@ -1,4 +1,4 @@
-function Drawer({ onClose, items = [] }) {
+function Drawer({ onRemove, onClose, items = [] }) {
   return (
     <div className="overlay">
       <div className="drawer d-flex flex-column">
@@ -14,46 +14,53 @@ function Drawer({ onClose, items = [] }) {
           />
         </div>
 
-        <div className="items flex">
-          {items.map((obj) => (
-            <div className="cartItem d-flex justify-between align-center">
-              <img
-                className="sneakerImage"
-                width={90}
-                height={80}
-                src={obj.imageURL}
-                alt={obj.title}
-              />
-              <div>
-                <h4>{obj.title}</h4>
-                <b>${obj.price} USD</b>
-              </div>
+        {items.length > 0 ? (
+          <div>
+            <div className="items flex">
+              {items.map((obj) => (
+                <div className="cartItem d-flex justify-between align-center">
+                  <img
+                    className="sneakerImage"
+                    width={90}
+                    height={80}
+                    src={obj.imageURL}
+                    alt={obj.title}
+                  />
+                  <div>
+                    <h4>{obj.title}</h4>
+                    <b>${obj.price} USD</b>
+                  </div>
 
-              <img
-                className="removeBtn"
-                width={32}
-                height={32}
-                src="/img/remove-btn.svg"
-                alt="Remove Icon"
-              />
+                  <img
+                    onClick={() => onRemove(obj.id)}
+                    className="removeBtn"
+                    width={32}
+                    height={32}
+                    src="/img/remove-btn.svg"
+                    alt="Remove Icon"
+                  />
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-        <div className="cartTotalBlock mb-30">
-          <ul>
-            <li className="d-flex mb-15">
-              <span>Tax fee (5%):</span>
-              <div></div>
-              <b>$24 USD</b>
-            </li>
-            <li className="d-flex">
-              <span>Total:</span>
-              <div></div>
-              <b>$144 USD</b>
-            </li>
-          </ul>
-          <button className="button mt-30 cu-p">Complete order</button>
-        </div>
+            <div className="cartTotalBlock mb-30">
+              <ul>
+                <li className="d-flex mb-15">
+                  <span>Tax fee (5%):</span>
+                  <div></div>
+                  <b>$24 USD</b>
+                </li>
+                <li className="d-flex">
+                  <span>Total:</span>
+                  <div></div>
+                  <b>$144 USD</b>
+                </li>
+              </ul>
+              <button className="button mt-30 cu-p">Complete order</button>
+            </div>
+          </div>
+        ) : (
+          <h1>No items in Cart</h1>
+        )}
       </div>
     </div>
   )
