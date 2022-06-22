@@ -1,18 +1,21 @@
+import { Link } from 'react-router-dom'
 function Header(props) {
   return (
     <header>
-      <div className="headerLeft">
-        <img
-          width={40}
-          height={40}
-          src="/img/logo.png"
-          alt="Company Logo"
-        ></img>
-        <div>
-          <h3>REACT SNEAKERS</h3>
-          <p>Best sneakers shop</p>
+      <Link to="/" style={{ 'text-decoration': 'none', 'color': 'inherit'}}>
+        <div className="headerLeft">
+          <img
+            width={40}
+            height={40}
+            src="/img/logo.png"
+            alt="Company Logo"
+          ></img>
+          <div>
+            <h3>REACT SNEAKERS</h3>
+            <p>Best sneakers shop</p>
+          </div>
         </div>
-      </div>
+      </Link>
 
       <ul>
         <li className="cu-p" onClick={props.onClickCart}>
@@ -20,7 +23,14 @@ function Header(props) {
           <span>$1205 USD.</span>
         </li>
         <li>
-          <img width={20} height={20} src="/img/favorite.svg" alt="Group"></img>
+          <Link to="/favorites">
+            <img
+              width={20}
+              height={20}
+              src="/img/favorite.svg"
+              alt="Group"
+            ></img>
+          </Link>
         </li>
         <li>
           <img width={20} height={20} src="/img/union.svg" alt="Group"></img>
