@@ -52,7 +52,7 @@ function Drawer({ onClose, items = [] }) {
               <b>$144 USD</b>
             </li>
           </ul>
-          <button class="button mt-30 cu-p">Complete order</button>
+          <button className="button mt-30 cu-p">Complete order</button>
         </div>
       </div>
     </div>

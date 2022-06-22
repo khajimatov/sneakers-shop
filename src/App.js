@@ -6,6 +6,7 @@ import Drawer from './components/Drawer'
 
 function App() {
   const [items, setItems] = useState([])
+  const [searchValue, setSearchValue] = useState('')
   const [cartItems, setCartItems] = useState([])
   const [isCartOpened, setIsCartOpened] = useState(false)
 
@@ -20,16 +21,22 @@ function App() {
   }, [])
 
   const onAddToCart = (obj) => {
-    setCartItems(prev => [...prev, obj])
+    setCartItems((prev) => [...prev, obj])
+  }
+
+  const onChangeSearchInput = (event) => {
+    setSearchValue(event.target.value)
   }
 
   return (
     <div className="wrapper">
-      {isCartOpened && <Drawer items={cartItems} onClose={() => setIsCartOpened(false)} />}
+      {isCartOpened && (
+        <Drawer items={cartItems} onClose={() => setIsCartOpened(false)} />
+      )}
       <Header onClickCart={() => setIsCartOpened(true)} />
       <div className="content">
         <div className="d-flex justify-between align-center">
-          <h1>All sneakers</h1>
+          <h1>{searchValue ? `Results by: ${searchValue}` : 'All sneakers'}</h1>
           <div className="search-block align-center d-flex">
             <label htmlFor="search">
               <img
@@ -40,19 +47,41 @@ function App() {
               />
             </label>
             <input
+              value={searchValue}
+              onChange={onChangeSearchInput}
               autoComplete="off"
               type="text"
               placeholder="Search..."
               name="search"
               id="search"
             />
+            {searchValue && (
+              <img
+                onClick={() => setSearchValue('')}
+                className="cu-p"
+                width={32}
+                height={32}
+                src="/img/remove-btn.svg"
+                alt="Remove button"
+              />
+            )}
           </div>
         </div>
 
         <div className="sneakers">
-          {items.map((item) => (
-            <Card title={item.title} price={item.price} imageURL={item.imageURL} onPlus={(obj) => onAddToCart(obj)} />
-          ))}
+          {items
+            .filter((item) =>
+              item.title.toLowerCase().includes(searchValue.toLowerCase()),
+            )
+            .map((item) => (
+              <Card
+                key={item.id}
+                title={item.title}
+                price={item.price}
+                imageURL={item.imageURL}
+                onPlus={(obj) => onAddToCart(obj)}
+              />
+            ))}
         </div>
       </div>
     </div>
