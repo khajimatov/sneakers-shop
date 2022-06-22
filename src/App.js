@@ -23,18 +23,21 @@ function App() {
       .then((res) => {
         setCartItems(res.data)
       })
+    axios
+      .get('https://611a826e5710ca00173a1a6e.mockapi.io/favorites')
+      .then((res) => {
+        setFavoriteItems(res.data)
+      })
   }, [])
 
   const onAddToCart = (obj) => {
-    axios
-      .post('https://611a826e5710ca00173a1a6e.mockapi.io/cart', obj)
-      .then(setCartItems((prev) => [...prev, obj]))
+    axios.post('https://611a826e5710ca00173a1a6e.mockapi.io/cart', obj)
+    setCartItems((prev) => [...prev, obj])
   }
 
   const onAddToFavorite = (obj) => {
-    axios
-      .post('https://611a826e5710ca00173a1a6e.mockapi.io/favorites', obj)
-      .then(setFavoriteItems((prev) => [...prev, obj]))
+    axios.post('https://611a826e5710ca00173a1a6e.mockapi.io/favorites', obj)
+    setFavoriteItems((prev) => [...prev, obj])
   }
 
   const onChangeSearchInput = (event) => {

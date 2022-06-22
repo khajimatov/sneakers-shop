@@ -14,7 +14,6 @@ function Card({ title, price, imageURL, onFavorite, onPlus }) {
     setIsFavorite(!isFavorite)
   }
 
-
   return (
     <div className={styles.card}>
       <img
@@ -22,7 +21,7 @@ function Card({ title, price, imageURL, onFavorite, onPlus }) {
         className="pos-a cu-p"
         height={22}
         width={22}
-        src={isFavorite ? '/img/favorited.png' : "/img/favorite-btn.svg"}
+        src={isFavorite ? '/img/favorited.png' : '/img/favorite-btn.svg'}
         alt="Favorite Icon"
       />
       <img width={133} height={112} src={imageURL} alt={title} />
@@ -32,7 +31,7 @@ function Card({ title, price, imageURL, onFavorite, onPlus }) {
           <h6>PRICE:</h6>
           <b>${price} USD</b>
         </div>
-        <button onClick={onClickPlus}>
+        <button onClick={() => onClickPlus()}>
           <img
             src={isAdded ? '/img/plus-added.png' : '/img/plus.svg'}
             alt="Plus icon"
