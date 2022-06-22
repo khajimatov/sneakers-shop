@@ -13,6 +13,7 @@ function Header(props) {
           <p>Best sneakers shop</p>
         </div>
       </div>
+
       <ul>
         <li className="cu-p" onClick={props.onClickCart}>
           <img width={20} height={20} src="/img/group.svg" alt="Group"></img>
