@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, createContext } from 'react'
 import axios from 'axios'
 import { Route, Routes } from 'react-router-dom'
+import AppContext from './context'
 
 import './index.scss'
 import Header from './components/Header'
@@ -13,6 +14,7 @@ function App() {
   const [cartItems, setCartItems] = useState([])
   const [favoriteItems, setFavoriteItems] = useState([])
   const [items, setItems] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     async function fetchData() {
@@ -28,6 +30,7 @@ function App() {
         'https://611a826e5710ca00173a1a6e.mockapi.io/items',
       )
 
+      setIsLoading(false)
       setCartItems(cartResponse.data)
       setFavoriteItems(favoritesResponse.data)
       setItems(itemsResponse.data)
@@ -82,39 +85,41 @@ function App() {
 
   return (
     <div className="wrapper">
-      {isCartOpened && (
-        <Drawer
-          onRemove={onRemoveItem}
-          items={cartItems}
-          onClose={() => setIsCartOpened(false)}
-        />
-      )}
-      <Header onClickCart={() => setIsCartOpened(true)} />
-      <div className="content">
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Home
-                items={items}
-                onAddToFavorite={onAddToFavorite}
-                onAddToCart={onAddToCart}
-                cartItems={cartItems}
-              />
-            }
+      <AppContext.Provider value={{ items, favoriteItems, cartItems }}>
+        {isCartOpened && (
+          <Drawer
+            onRemove={onRemoveItem}
+            items={cartItems}
+            onClose={() => setIsCartOpened(false)}
           />
-          <Route
-            path="favorites"
-            element={
-              <Favorites
-                favoriteItems={favoriteItems}
-                onAddToFavorite={onAddToFavorite}
-                onAddToCart={onAddToCart}
-              />
-            }
-          />
-        </Routes>
-      </div>
+        )}
+        <Header onClickCart={() => setIsCartOpened(true)} />
+        <div className="content">
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Home
+                  items={items}
+                  onAddToFavorite={onAddToFavorite}
+                  onAddToCart={onAddToCart}
+                  cartItems={cartItems}
+                  isLoading={isLoading}
+                />
+              }
+            />
+            <Route
+              path="favorites"
+              element={
+                <Favorites
+                  onAddToFavorite={onAddToFavorite}
+                  onAddToCart={onAddToCart}
+                />
+              }
+            />
+          </Routes>
+        </div>
+      </AppContext.Provider>
     </div>
   )
 }

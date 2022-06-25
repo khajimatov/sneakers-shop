@@ -2,11 +2,33 @@ import React from 'react'
 import { useState } from 'react'
 import Card from '../components/Card'
 
-const Home = ({ items, onAddToFavorite, onAddToCart, cartItems }) => {
+const Home = ({
+  items,
+  onAddToFavorite,
+  onAddToCart,
+  cartItems,
+  isLoading,
+}) => {
   const [searchValue, setSearchValue] = useState('')
 
   const onChangeSearchInput = (event) => {
     setSearchValue(event.target.value)
+  }
+
+  const renderItems = () => {
+    const filteredItems = items.filter((item) =>
+      item.title.toLowerCase().includes(searchValue.toLowerCase()),
+    )
+    return (isLoading ? [...Array(4)] : filteredItems).map((item, index) => (
+      <Card
+        key={index}
+        onFavorite={(obj) => onAddToFavorite(obj)}
+        onPlus={(obj) => onAddToCart(obj)}
+        added={cartItems.some((obj) => obj.id === item.id) ? true : false}
+        loading={isLoading}
+        {...item}
+      />
+    ))
   }
 
   return (
@@ -44,24 +66,7 @@ const Home = ({ items, onAddToFavorite, onAddToCart, cartItems }) => {
         </div>
       </div>
 
-      <div className="sneakers">
-        {items
-          .filter((item) =>
-            item.title.toLowerCase().includes(searchValue.toLowerCase()),
-          )
-          .map((item) => (
-            <Card
-              key={item.id}
-              onFavorite={(obj) => onAddToFavorite(obj)}
-              title={item.title}
-              price={item.price}
-              imageURL={item.imageURL}
-              onPlus={(obj) => onAddToCart(obj)}
-              added={cartItems.some((obj) => obj.id === item.id) ? true : false}
-              {...item}
-            />
-          ))}
-      </div>
+      <div className="sneakers">{renderItems()}</div>
     </>
   )
 }
