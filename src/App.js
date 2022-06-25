@@ -15,24 +15,25 @@ function App() {
   const [items, setItems] = useState([])
 
   useEffect(() => {
-    axios
-      .get('https://611a826e5710ca00173a1a6e.mockapi.io/items')
-      .then((res) => {
-        setItems(res.data)
-      })
-    axios
-      .get('https://611a826e5710ca00173a1a6e.mockapi.io/cart')
-      .then((res) => {
-        setCartItems(res.data)
-      })
-    axios
-      .get('https://611a826e5710ca00173a1a6e.mockapi.io/favorites')
-      .then((res) => {
-        setFavoriteItems(res.data)
-      })
-  }, [])
+    async function fetchData() {
+      const cartResponse = await axios.get(
+        'https://611a826e5710ca00173a1a6e.mockapi.io/cart',
+      )
 
-  
+      const favoritesResponse = await axios.get(
+        'https://611a826e5710ca00173a1a6e.mockapi.io/favorites',
+      )
+
+      const itemsResponse = await axios.get(
+        'https://611a826e5710ca00173a1a6e.mockapi.io/items',
+      )
+
+      setCartItems(cartResponse.data)
+      setFavoriteItems(favoritesResponse.data)
+      setItems(itemsResponse.data)
+    }
+    fetchData()
+  }, [])
 
   const onRemoveItem = (id) => {
     axios
@@ -61,7 +62,9 @@ function App() {
 
   const onAddToFavorite = async (obj) => {
     try {
-      if (favoriteItems.find((favObj) => Number(favObj.id) === Number(obj.id))) {
+      if (
+        favoriteItems.find((favObj) => Number(favObj.id) === Number(obj.id))
+      ) {
         axios.delete(
           `https://611a826e5710ca00173a1a6e.mockapi.io/favorites/${obj.id}`,
         )
@@ -96,6 +99,7 @@ function App() {
                 items={items}
                 onAddToFavorite={onAddToFavorite}
                 onAddToCart={onAddToCart}
+                cartItems={cartItems}
               />
             }
           />

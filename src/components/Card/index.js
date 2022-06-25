@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import styles from './Card.module.scss'
 
-function Card({ id, title, price, imageURL, onFavorite, onPlus }) {
+function Card({ id, title, price, imageURL, onFavorite, onPlus, added }) {
   const [isAdded, setIsAdded] = useState(false)
   const [isFavorite, setIsFavorite] = useState(false)
 
@@ -33,7 +33,7 @@ function Card({ id, title, price, imageURL, onFavorite, onPlus }) {
         </div>
         <button onClick={() => onClickPlus()}>
           <img
-            src={isAdded ? '/img/plus-added.png' : '/img/plus.svg'}
+            src={added ? '/img/plus-added.png' : '/img/plus.svg'}
             alt="Plus icon"
           />
         </button>

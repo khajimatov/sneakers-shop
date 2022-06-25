@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import Card from '../components/Card'
 
-const Home = ({ items, onAddToFavorite, onAddToCart }) => {
+const Home = ({ items, onAddToFavorite, onAddToCart, cartItems }) => {
   const [searchValue, setSearchValue] = useState('')
 
   const onChangeSearchInput = (event) => {
@@ -57,6 +57,7 @@ const Home = ({ items, onAddToFavorite, onAddToCart }) => {
               price={item.price}
               imageURL={item.imageURL}
               onPlus={(obj) => onAddToCart(obj)}
+              added={cartItems.some((obj) => obj.id === item.id) ? true : false}
               {...item}
             />
           ))}
