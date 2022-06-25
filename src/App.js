@@ -79,7 +79,7 @@ function App() {
         setFavoriteItems((prev) => [...prev, data])
       }
     } catch (error) {
-      alert('Cannot add to cart')
+      alert('Cannot add to Favorite')
     }
   }
 

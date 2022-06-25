@@ -11,9 +11,10 @@ function Card({
   onPlus,
   added,
   loading,
+  favorited,
 }) {
   const [isAdded, setIsAdded] = useState(added)
-  const [isFavorite, setIsFavorite] = useState(false)
+  const [isFavorite, setIsFavorite] = useState(favorited)
 
   const onClickPlus = () => {
     onPlus({ id, title, price, imageURL })
