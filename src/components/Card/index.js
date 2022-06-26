@@ -1,28 +1,17 @@
-import { useState } from 'react'
+import { useContext } from 'react'
 import styles from './Card.module.scss'
 import ContentLoader from 'react-content-loader'
 
-function Card({
-  id,
-  title,
-  price,
-  imageURL,
-  onFavorite,
-  onPlus,
-  added,
-  loading,
-  favorited,
-}) {
-  const [isAdded, setIsAdded] = useState(added)
-  const [isFavorite, setIsFavorite] = useState(favorited)
+import AppContext from '../../context'
+
+function Card({ id, title, price, imageURL, onFavorite, onPlus, loading }) {
+  const { isItemAdded, isItemFavorited } = useContext(AppContext)
 
   const onClickPlus = () => {
     onPlus({ id, title, price, imageURL })
-    setIsAdded(!isAdded)
   }
   const onClickFavorite = () => {
     onFavorite({ id, title, price, imageURL })
-    setIsFavorite(!isFavorite)
   }
 
   return (
@@ -49,7 +38,11 @@ function Card({
             className="pos-a cu-p"
             height={22}
             width={22}
-            src={isFavorite ? '/img/favorited.png' : '/img/favorite-btn.svg'}
+            src={
+              isItemFavorited(id)
+                ? '/img/favorited.png'
+                : '/img/favorite-btn.svg'
+            }
             alt="Favorite Icon"
           />
           <img width={133} height={112} src={imageURL} alt={title} />
@@ -61,7 +54,7 @@ function Card({
             </div>
             <button onClick={() => onClickPlus()}>
               <img
-                src={isAdded ? '/img/plus-added.png' : '/img/plus.svg'}
+                src={isItemAdded(id) ? '/img/plus-added.png' : '/img/plus.svg'}
                 alt="Plus icon"
               />
             </button>

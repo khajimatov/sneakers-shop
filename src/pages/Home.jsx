@@ -1,4 +1,3 @@
-import React from 'react'
 import { useState } from 'react'
 import Card from '../components/Card'
 
@@ -10,6 +9,7 @@ const Home = ({
   isLoading,
 }) => {
   const [searchValue, setSearchValue] = useState('')
+
 
   const onChangeSearchInput = (event) => {
     setSearchValue(event.target.value)
@@ -24,7 +24,6 @@ const Home = ({
         key={index}
         onFavorite={(obj) => onAddToFavorite(obj)}
         onPlus={(obj) => onAddToCart(obj)}
-        added={cartItems.some((obj) => obj.id === item.id) ? true : false}
         loading={isLoading}
         {...item}
       />
