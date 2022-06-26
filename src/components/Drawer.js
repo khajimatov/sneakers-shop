@@ -2,6 +2,7 @@ import axios from 'axios'
 import { useContext, useState } from 'react'
 
 import AppContext from '../context'
+import Info from './Info'
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
@@ -42,7 +43,7 @@ function Drawer({ onRemove, items = [] }) {
     <div className="overlay">
       <div className="drawer d-flex flex-column">
         <div className="d-flex mt-30 justify-between align-center">
-          <h2>Your cart [1]</h2>
+          <h2>Your cart [{cartItems.length}]</h2>
           <img
             onClick={() => setIsCartOpened(false)}
             className="cu-p"
@@ -107,14 +108,23 @@ function Drawer({ onRemove, items = [] }) {
             </div>
           </div>
         ) : (
-          <>
-            <h1>
-              {isOrderComplete
-                ? `Your Order ${orderId} Completed`
-                : 'No items in Cart'}
-            </h1>
-            <button onClick={() => setIsCartOpened(false)}>Go back</button>
-          </>
+          <Info
+            title={
+              isOrderComplete
+                ? `Your order ${orderId} is complete🥳`
+                : 'Your cart is empty'
+            }
+            image={
+              isOrderComplete
+                ? '/img/order-complete.png'
+                : '/img/cart-empty.png'
+            }
+            text={
+              isOrderComplete
+                ? `Your order #${orderId} will soon be delivered`
+                : 'Add at least one pair of sneakers to order.'
+            }
+          />
         )}
       </div>
     </div>

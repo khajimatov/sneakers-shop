@@ -102,8 +102,9 @@ header {
   width: 400px;
   background-color: #fff;
 
-  .items{
+  .items {
     overflow: auto;
+    max-height: 500px;
   }
   h2 {
     margin: 0;
