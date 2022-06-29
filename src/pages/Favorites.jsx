@@ -19,6 +19,7 @@ const Favorites = () => {
             price={item.price}
             imageURL={item.imageURL}
             onPlus={(obj) => onAddToCart(obj)}
+            {...item}
           />
         ))}
       </div>
