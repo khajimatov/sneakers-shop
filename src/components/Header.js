@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom'
+
 function Header(props) {
   return (
     <header>
-      <Link to="/" style={{ 'textDecoration': 'none', 'color': 'inherit'}}>
+      <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
         <div className="headerLeft">
           <img
             width={40}
