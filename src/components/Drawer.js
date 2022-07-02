@@ -1,16 +1,19 @@
 import axios from 'axios'
-import { useContext, useState } from 'react'
+import { useState, useContext } from 'react'
 
-import AppContext from '../context'
 import Info from './Info'
+import { useCart } from '../hooks/useCart'
+import AppContext from '../context'
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
 function Drawer({ onRemove, items = [] }) {
-  const { setIsCartOpened, setCartItems, cartItems } = useContext(AppContext)
+  const { setIsCartOpened } = useContext(AppContext)
   const [isOrderComplete, setIsOrderComplete] = useState(false)
   const [orderId, setOrderId] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
+
+  const { cartItems, setCartItems, orderPrice } = useCart()
 
   const onClickOrder = async () => {
     try {
@@ -90,12 +93,12 @@ function Drawer({ onRemove, items = [] }) {
                 <li className="d-flex mb-15">
                   <span>Tax fee (5%):</span>
                   <div></div>
-                  <b>$24 USD</b>
+                  <b>${(orderPrice / 100) * 5} USD</b>
                 </li>
                 <li className="d-flex">
                   <span>Total:</span>
                   <div></div>
-                  <b>$144 USD</b>
+                  <b>${orderPrice} USD</b>
                 </li>
               </ul>
               <button

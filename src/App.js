@@ -8,6 +8,7 @@ import Header from './components/Header'
 import Home from './pages/Home'
 import Drawer from './components/Drawer'
 import Favorites from './pages/Favorites'
+import Orders from './pages/Orders'
 
 function App() {
   const [isCartOpened, setIsCartOpened] = useState(false)
@@ -132,6 +133,7 @@ function App() {
                 />
               }
             />
+            <Route path="orders" element={<Orders />} />
           </Routes>
         </div>
       </AppContext.Provider>
