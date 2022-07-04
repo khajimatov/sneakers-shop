@@ -1,15 +1,11 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+
+import AppContext from '../context'
 import Card from '../components/Card'
 
-const Home = ({
-  items,
-  onAddToFavorite,
-  onAddToCart,
-  cartItems,
-  isLoading,
-}) => {
+const Home = ({ items, onAddToFavorite, isLoading }) => {
   const [searchValue, setSearchValue] = useState('')
-
+  const { onAddToCart } = useContext(AppContext)
 
   const onChangeSearchInput = (event) => {
     setSearchValue(event.target.value)

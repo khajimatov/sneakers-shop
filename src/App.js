@@ -44,16 +44,22 @@ function App() {
   const onRemoveItem = (id) => {
     axios
       .delete(`https://611a826e5710ca00173a1a6e.mockapi.io/cart/${id}`)
-      .then(setCartItems((prev) => prev.filter((item) => item.id !== id)))
+      .then(
+        setCartItems((prev) =>
+          prev.filter((item) => Number(item.id) !== Number(id)),
+        ),
+      )
   }
 
   const onAddToCart = async (obj) => {
     try {
-      if (cartItems.find((cartObj) => Number(cartObj.id) === Number(obj.id))) {
+      if (cartItems.find((cartObj) => Number(cartObj.parentId) === Number(obj.id))) {
         axios.delete(
           `https://611a826e5710ca00173a1a6e.mockapi.io/cart/${obj.id}`,
         )
-        setCartItems((prev) => prev.filter((item) => item.id !== obj.id))
+        setCartItems((prev) =>
+          prev.filter((item) => Number(item.parentId) !== Number(obj.id)),
+        )
       } else {
         const { data } = await axios.post(
           'https://611a826e5710ca00173a1a6e.mockapi.io/cart',
@@ -124,7 +130,6 @@ function App() {
                 <Home
                   items={items}
                   onAddToFavorite={onAddToFavorite}
-                  onAddToCart={onAddToCart}
                   cartItems={cartItems}
                   isLoading={isLoading}
                 />
