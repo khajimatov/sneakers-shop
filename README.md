@@ -31,6 +31,10 @@ Project build with ReactJS. I am developing this website to add it to my portfol
 ![image](https://user-images.githubusercontent.com/62846961/175819365-68728e1a-c908-41fc-9c15-803fbc65bf8d.png)
 
 
+## 4th July 2022, project looks like this↴
+![image](https://user-images.githubusercontent.com/62846961/177194189-c9150d14-29f6-409b-b5de-549e06ff9a11.png)
+
+
 ### `npm start`
 
 Runs the app in the development mode.\
