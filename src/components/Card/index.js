@@ -6,12 +6,13 @@ import AppContext from '../../context'
 
 function Card({ id, title, price, imageURL, onFavorite, onPlus, loading }) {
   const { isItemAdded, isItemFavorited } = useContext(AppContext)
+  const obj = { id, parentId: id, title, price, imageURL }
 
   const onClickPlus = () => {
-    onPlus({ id, title, price, imageURL })
+    onPlus(obj)
   }
   const onClickFavorite = () => {
-    onFavorite({ id, title, price, imageURL })
+    onFavorite(obj)
   }
 
   return (

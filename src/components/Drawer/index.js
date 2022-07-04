@@ -61,11 +61,11 @@ function Drawer({ onRemove, items = [], opened }) {
 
         {items.length > 0 ? (
           <div className="flex d-flex flex-column">
-            <div className="items flex">
+            <div className={`${styles.items} flex`}>
               {items.map((obj) => (
                 <div
                   key={obj.id}
-                  className="cartItem d-flex justify-between align-center"
+                  className={`${styles.cartItem} d-flex justify-between align-center`}
                 >
                   <img
                     className="sneakerImage"
@@ -81,7 +81,7 @@ function Drawer({ onRemove, items = [], opened }) {
 
                   <img
                     onClick={() => onRemove(obj.id)}
-                    className="removeBtn"
+                    className={`${styles.removeBtn}`}
                     width={32}
                     height={32}
                     src="/img/remove-btn.svg"
@@ -90,7 +90,7 @@ function Drawer({ onRemove, items = [], opened }) {
                 </div>
               ))}
             </div>
-            <div className="cartTotalBlock mb-30">
+            <div className={`${styles.cartTotalBlock} mb-30`}>
               <ul>
                 <li className="d-flex mb-15">
                   <span>Tax fee (5%):</span>
@@ -106,7 +106,7 @@ function Drawer({ onRemove, items = [], opened }) {
               <button
                 disabled={isLoading}
                 onClick={onClickOrder}
-                className="button mt-30 cu-p"
+                className={`${styles.button} mt-30 cu-p`}
               >
                 Complete order
               </button>

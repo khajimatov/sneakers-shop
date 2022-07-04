@@ -88,7 +88,7 @@ function App() {
   }
 
   const isItemAdded = (id) => {
-    return cartItems.find((obj) => Number(obj.id) === Number(id))
+    return cartItems.find((obj) => Number(obj.parentId) === Number(id))
   }
 
   const isItemFavorited = (id) => {
