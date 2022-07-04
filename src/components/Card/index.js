@@ -33,18 +33,20 @@ function Card({ id, title, price, imageURL, onFavorite, onPlus, loading }) {
         </ContentLoader>
       ) : (
         <>
-          <img
-            onClick={onClickFavorite}
-            className="pos-a cu-p"
-            height={22}
-            width={22}
-            src={
-              isItemFavorited(id)
-                ? '/img/favorited.png'
-                : '/img/favorite-btn.svg'
-            }
-            alt="Favorite Icon"
-          />
+          {onFavorite && (
+            <img
+              onClick={onClickFavorite}
+              className="pos-a cu-p"
+              height={22}
+              width={22}
+              src={
+                isItemFavorited(id)
+                  ? '/img/favorited.png'
+                  : '/img/favorite-btn.svg'
+              }
+              alt="Favorite Icon"
+            />
+          )}
           <img width={133} height={112} src={imageURL} alt={title} />
           <h4>{title}</h4>
           <div className={styles.cardinfo}>
@@ -52,12 +54,16 @@ function Card({ id, title, price, imageURL, onFavorite, onPlus, loading }) {
               <h6>PRICE:</h6>
               <b>${price} USD</b>
             </div>
-            <button onClick={() => onClickPlus()}>
-              <img
-                src={isItemAdded(id) ? '/img/plus-added.png' : '/img/plus.svg'}
-                alt="Plus icon"
-              />
-            </button>
+            {onPlus && (
+              <button onClick={() => onClickPlus()}>
+                <img
+                  src={
+                    isItemAdded(id) ? '/img/plus-added.png' : '/img/plus.svg'
+                  }
+                  alt="Plus icon"
+                />
+              </button>
+            )}
           </div>
         </>
       )}

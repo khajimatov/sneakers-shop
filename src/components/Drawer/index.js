@@ -1,13 +1,15 @@
 import axios from 'axios'
 import { useState, useContext } from 'react'
 
-import Info from './Info'
-import { useCart } from '../hooks/useCart'
-import AppContext from '../context'
+import Info from '../Info'
+import { useCart } from '../../hooks/useCart'
+import AppContext from '../../context'
+
+import styles from './Drawer.module.scss'
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
-function Drawer({ onRemove, items = [] }) {
+function Drawer({ onRemove, items = [], opened }) {
   const { setIsCartOpened } = useContext(AppContext)
   const [isOrderComplete, setIsOrderComplete] = useState(false)
   const [orderId, setOrderId] = useState(null)
@@ -43,8 +45,8 @@ function Drawer({ onRemove, items = [] }) {
   }
 
   return (
-    <div className="overlay">
-      <div className="drawer d-flex flex-column">
+    <div className={`${styles.overlay} ${opened && styles.overlayVisible}`}>
+      <div className={`${styles.drawer} d-flex flex-column`}>
         <div className="d-flex mt-30 justify-between align-center">
           <h2>Your cart [{cartItems.length}]</h2>
           <img

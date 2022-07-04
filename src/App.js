@@ -19,22 +19,24 @@ function App() {
 
   useEffect(() => {
     async function fetchData() {
-      const cartResponse = await axios.get(
-        'https://611a826e5710ca00173a1a6e.mockapi.io/cart',
-      )
+      try {
+        const [
+          cartResponse,
+          favoritesResponse,
+          itemsResponse,
+        ] = await Promise.all([
+          axios.get('https://611a826e5710ca00173a1a6e.mockapi.io/cart'),
+          axios.get('https://611a826e5710ca00173a1a6e.mockapi.io/favorites'),
+          axios.get('https://611a826e5710ca00173a1a6e.mockapi.io/items'),
+        ])
 
-      const favoritesResponse = await axios.get(
-        'https://611a826e5710ca00173a1a6e.mockapi.io/favorites',
-      )
-
-      const itemsResponse = await axios.get(
-        'https://611a826e5710ca00173a1a6e.mockapi.io/items',
-      )
-
-      setIsLoading(false)
-      setCartItems(cartResponse.data)
-      setFavoriteItems(favoritesResponse.data)
-      setItems(itemsResponse.data)
+        setIsLoading(false)
+        setCartItems(cartResponse.data)
+        setFavoriteItems(favoritesResponse.data)
+        setItems(itemsResponse.data)
+      } catch (error) {
+        alert('Cannot load data')
+      }
     }
     fetchData()
   }, [])
@@ -108,7 +110,11 @@ function App() {
           setCartItems,
         }}
       >
-        {isCartOpened && <Drawer onRemove={onRemoveItem} items={cartItems} />}
+        <Drawer
+          onRemove={onRemoveItem}
+          items={cartItems}
+          opened={isCartOpened}
+        />
         <Header onClickCart={() => setIsCartOpened(true)} />
         <div className="content">
           <Routes>
