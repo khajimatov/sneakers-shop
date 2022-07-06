@@ -114,6 +114,7 @@ function Drawer({ onRemove, items = [], opened }) {
           </div>
         ) : (
           <Info
+            buttonInclude
             title={
               isOrderComplete
                 ? `Your order ${orderId} is complete🥳`

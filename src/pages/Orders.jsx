@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 import Card from '../components/Card'
+import Info from '../components/Info'
 
 const Orders = () => {
   const [orders, setOrders] = useState([])
@@ -29,9 +30,18 @@ const Orders = () => {
       </div>
 
       <div className="sneakers">
-        {(isLoading ? [...Array(4)] : orders).map((item, index) => (
-          <Card key={index} {...item} loading={isLoading} />
-        ))}
+        {orders.length > 0 ? (
+          (isLoading ? [...Array(4)] : orders).map((item, index) => (
+            <Card key={index} {...item} loading={isLoading} />
+          ))
+        ) : (
+          <Info
+            title="No Orders"
+            image="/img/no-orders.png"
+            text="Order some sneakers"
+            buttonInclude={false}
+          />
+        )}
       </div>
     </>
   )

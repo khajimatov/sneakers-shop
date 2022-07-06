@@ -3,7 +3,7 @@ import { useContext } from 'react'
 import styles from './Info.module.scss'
 import AppContext from '../../context'
 
-const Info = ({ title, text, image }) => {
+const Info = ({ title, text, image, buttonInclude }) => {
   const { setIsCartOpened } = useContext(AppContext)
   return (
     <>
@@ -17,7 +17,9 @@ const Info = ({ title, text, image }) => {
         />
         <h2>{title}</h2>
         <p>{text}</p>
-        <button onClick={() => setIsCartOpened(false)}>Go back</button>
+        {buttonInclude && (
+          <button onClick={() => setIsCartOpened(false)}>Go back</button>
+        )}
       </div>
     </>
   )
