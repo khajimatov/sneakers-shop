@@ -18,6 +18,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
+
     async function fetchData() {
       try {
         const [
@@ -38,7 +39,7 @@ function App() {
         alert('Cannot load data')
       }
     }
-    fetchData()
+    fetchData();
   }, [])
 
   const onRemoveItem = (id) => {
