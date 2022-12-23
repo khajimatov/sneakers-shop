@@ -1,4 +1,4 @@
-# Sneakers Shop ([Demo](https://sneakers-shop-khajimatov.vercel.app/))
+# Sneakers Shop
 
 Project build with ReactJS. I am developing this website to add it to my portfolio and learn HTML, CSS, JavaScript and ReactJS throughout development and learning process.
 
@@ -45,6 +45,3 @@ Project build with ReactJS. I am developing this website to add it to my portfol
 ## 4th July 2022, project looks like this↴
 
 ![image](https://user-images.githubusercontent.com/62846961/177194189-c9150d14-29f6-409b-b5de-549e06ff9a11.png)
-
-# Deployed at
- - https://sneakers-shop-khajimatov.vercel.app/
