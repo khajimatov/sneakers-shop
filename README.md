@@ -9,7 +9,7 @@ Project build with ReactJS. I am developing this website to add it to my portfol
 - Orders
 - Works with database(MockAPI)
 - Search
-[[https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png|width=100px]]
+
 ### ⚡Currently, all functionalities that i wanted to implement are implemented
 
 -- But, might add these features:
@@ -20,7 +20,7 @@ Project build with ReactJS. I am developing this website to add it to my portfol
 
 ## 14th June 2022, project looks like this↴
 
-![image](https://user-images.githubusercontent.com/62846961/173613500-f98cebf3-8ed7-4fd4-8b74-b8dac269d2ed.png =300px)
+<img src="https://user-images.githubusercontent.com/62846961/173613500-f98cebf3-8ed7-4fd4-8b74-b8dac269d2ed.png" width="700" height="300" />
 
 ## 16-17th June 2022, project looks like this↴
 
