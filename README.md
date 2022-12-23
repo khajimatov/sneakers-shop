@@ -9,7 +9,7 @@ Project build with ReactJS. I am developing this website to add it to my portfol
 - Orders
 - Works with database(MockAPI)
 - Search
-
+[[https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png|width=100px]]
 ### ⚡Currently, all functionalities that i wanted to implement are implemented
 
 -- But, might add these features:
